@@ -1,0 +1,16 @@
+<!--index.wxml-->
+<view class="container">
+  <view  bindtap="bindViewTap" class="userinfo">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <text class="today-date">{{TodayDate}} 早安</text>
+  </view>
+  <view class="sign">
+    <button 
+      type="primary" 
+      size="{{primarySize}}" 
+      bindtap="primary"
+    > 早签到 
+    </button>
+  </view>
+</view>

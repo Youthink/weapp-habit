@@ -1,0 +1,9 @@
+<!--rank.wxml-->
+<view class="container">
+  <view>
+    <text class="today-date">{{TodayDate}}</text>
+  </view>
+  <view class="sign">
+    
+  </view>
+</view>
