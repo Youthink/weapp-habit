@@ -1,9 +1,21 @@
 <!--rank.wxml-->
 <view class="container">
-  <view>
-    <text class="today-date">{{TodayDate}}</text>
+  <view class="title">
+    <text>早起排名</text>
   </view>
-  <view class="sign">
-    
+  <view class="today-date">
+    <text>{{TodayDate}}</text>
+  </view>
+  <view class="table">
+    <view class="th">
+      <view class="td">排名</view>
+      <view class="td">昵称</view>
+      <view class="td">时间</view>
+    </view>
+    <view class="tr">
+      <view class="td">排名</view>
+      <view class="td">昵称</view>
+      <view class="td">时间</view>
+    </view>
   </view>
 </view>

@@ -12,7 +12,7 @@
   },
   "tabBar": {  
    "color": "#a9b7b7",  
-   "selectedColor": "#11cd6e",  
+   "selectedColor": "#1afa29",
    "borderStyle":"white",  
    "list": [{
      "selectedIconPath": "images/sign-hover.png",  

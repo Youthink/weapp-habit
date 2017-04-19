@@ -1,5 +1,34 @@
 /* pages/rank/rank.wxss */
 
+.title {
+    font-size: 60rpx;
+    color: springgreen;
+    margin-bottom: 40rpx;
+}
 .today-date {
   color: #555;
+  margin-bottom: 30rpx;
+}
+.table,.td{
+  border:1px solid #555;
+  margin:0;
+  padding:0;
+}
+.table{
+  border-top:none;
+  border-right:none;
+}
+.th{
+  border-top:none;
+
+}
+.tr{
+  border-top:none;
+
+}
+.td{
+  float:left;
+  padding:20rpx;
+  border-left:none;
+  border-bottom:none;
 }
