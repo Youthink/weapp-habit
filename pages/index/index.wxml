@@ -3,13 +3,16 @@
   <view  bindtap="bindViewTap" class="userinfo">
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
     <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    <text class="today-date">{{TodayDate}} 早安</text>
+    <text class="today-date">{{TodayDate}}</text>
   </view>
   <view class="sign">
-    <button 
+    <button wx:if="{{wakeUped}}"
+      type="default" 
+    > 已签到 
+    </button>
+    <button wx:else
       type="primary" 
-      size="{{primarySize}}" 
-      bindtap="primary"
+      bindtap="wakeUp"
     > 早签到 
     </button>
   </view>

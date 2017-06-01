@@ -1,13 +1,25 @@
 // pages/rank/rank.js
 
 const utils = require('../../utils/util');
+const Server = require('../../utils/service.js');
 
 Page({
   data:{
-    TodayDate: utils.formatDate(new Date())
+    TodayDate: utils.formatDate(new Date()),
+    ranks:[]
   },
   onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
+    const that = this;
+    Server({
+      url: 'http://localhost:3001/api/v1/everyday/wake-up-rank',
+      dataTransform: function (result) { //适配处理
+        if (result.success) {
+          that.setData({
+            ranks: result.data
+          })
+        }
+      }
+    })
   },
   onReady:function(){
     // 页面渲染完成

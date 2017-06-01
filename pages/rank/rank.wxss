@@ -1,34 +1,47 @@
 /* pages/rank/rank.wxss */
-
-.title {
-    font-size: 60rpx;
-    color: springgreen;
-    margin-bottom: 40rpx;
+page{
+  height:100%;
+  background-color: #ebe2db;
 }
-.today-date {
-  color: #555;
-  margin-bottom: 30rpx;
+.top-img{
+  width:100%;
 }
-.table,.td{
-  border:1px solid #555;
-  margin:0;
-  padding:0;
+.top-img image{
+  width:100%;
 }
-.table{
-  border-top:none;
-  border-right:none;
+.list{
+   background-color: #ebe2db;
 }
-.th{
-  border-top:none;
-
+.item{
+ display: flex;
+ background-color: #f7eee7;
+ padding: 5vw;
+ line-height: 70rpx;
+ margin-bottom: 30rpx;
 }
-.tr{
-  border-top:none;
-
+.item .rank{
+  margin-right:40rpx;
+  color: #5c5354;
+  font-size:35rpx;
+  font-weight:bold;
 }
-.td{
-  float:left;
-  padding:20rpx;
-  border-left:none;
-  border-bottom:none;
+.item .user{
+  display: flex;
+}
+.item .user-face{
+  width:70rpx;
+  height:70rpx;
+  border-radius: 50%;
+  margin-right:20rpx;
+}
+.item .user-name{
+  width: 210rpx;
+  color: #3d3835;
+  height:70rpx;
+}
+.item .time{
+  color: #1db405;
+  font-size:50rpx;
+  font-weight:bold;
+  margin-left:70rpx;
 }

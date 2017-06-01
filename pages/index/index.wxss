@@ -1,4 +1,17 @@
 /**index.wxss**/
+page{
+  height: 100%;
+  background-color: #f0eff5;
+}
+.container {
+  height: 100%;
+  width:90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -18,7 +31,8 @@
 
 .today-date {
   margin-top: 40rpx;
-  color: #555;
+  color: #1db405;
+  font-weight:bold;
 }
 .sign button{
   margin-top: 150rpx;
