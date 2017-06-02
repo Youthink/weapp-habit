@@ -21,7 +21,7 @@ function formatDate(date) {
   var second = date.getSeconds()
 
 
-  return [year, month, day].map(formatNumber).join(' - ')
+  return year + '年' +month + '月' + day + '日';
 }
 
 function formatNumber(n) {
