@@ -1,0 +1,13 @@
+{
+  "description": "一起坚持好习惯",
+  "setting": {
+    "urlCheck": true,
+    "es6": false,
+    "postcss": false,
+    "minified": false
+  },
+  "compileType": "miniprogram",
+  "appid": "wxaba044316ec2aad0",
+  "projectname": "weapp-habit",
+  "miniprogramRoot": "./dist"
+}
