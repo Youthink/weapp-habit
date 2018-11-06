@@ -72,11 +72,10 @@
             <view class="name">{{habit.name}}</view>
             <view class="score">💯 {{habit.score}}分</view>
           </view>
-          <button class="habit-btn">⚡ 完成 ⚡</button>
+          <button class="habit-btn">⚡ 完成⚡</button>
         </view>
       </repeat>
     </view>
-    <view class="title">添加导航 今天 所有 </view>
     <toast />
   </view>
 </template>

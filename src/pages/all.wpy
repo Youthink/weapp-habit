@@ -1,0 +1,24 @@
+<style lang="less">
+</style>
+<template>
+  <view class="container">
+  </view>
+</template>
+
+<script>
+  import wepy      from 'wepy';
+
+  export default class All extends wepy.page {
+    config = {
+      navigationBarTitleText: 'test'
+    }
+    components = {
+    }
+
+    data = {
+    }
+
+    onLoad() {
+    }
+  }
+</script>
