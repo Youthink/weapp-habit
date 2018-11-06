@@ -6,13 +6,53 @@
   }
 
   .userinfo-avatar {
-    width: 80rpx;
-    height: 80rpx;
+    width: 60rpx;
+    height: 60rpx;
     border-radius: 50%;
   }
 
   .userinfo-nickname {
     color: #aaa;
+    font-size: 25rpx;
+  }
+
+  .habits {
+    &.list {
+      .item {
+        background: #FFFFFF;
+        margin: 7.5rpx 20rpx;
+        border-radius: 5rpx;
+        padding: 20rpx 50rpx;
+        .left-part {
+          float: left;
+          .name {
+            color: #333;
+            font-size: 35rpx;
+
+          }
+          .score {
+            font-size: 25rpx;
+            margin-top: 10rpx;
+            color: #9398a7;
+          }
+        }
+        .habit-btn {
+          padding: 10rpx;
+          font-size: 20rpx;
+          display: inline-block;
+          float: right;
+          border: 0;
+          background: unset;
+          margin-top:15rpx;
+          overflow: unset;
+        }
+        &:after {
+          clear: both;
+          content: '';
+          display: block;
+        }
+      }
+    }
   }
 </style>
 <template>
@@ -25,13 +65,17 @@
     <view class="title">这里显示PK对比</view>
     <view class="title">这里显示今天的分数对比</view>
     <view class="title">这里显示本周期的分数对比</view>
-    <view class="title">这里显示习惯列表 </view>
-    <repeat for="{{habits}}" item="habit" key="{{habit.id}}">
-      <view class="title">{{habit.name}}</view>
-      <view class="title">{{habit.score}}</view>
-      <view class="title">按钮</view>
-    </repeat>
-
+    <view class="habits list">
+      <repeat for="{{habits}}" item="habit" key="{{habit.id}}">
+        <view class="item">
+          <view class="left-part">
+            <view class="name">{{habit.name}}</view>
+            <view class="score">💯 {{habit.score}}分</view>
+          </view>
+          <button class="habit-btn">⚡ 完成 ⚡</button>
+        </view>
+      </repeat>
+    </view>
     <view class="title">添加导航 今天 所有 </view>
     <toast />
   </view>
