@@ -18,6 +18,8 @@ module.exports = {
   },
   // add your custom rules here
   'rules': {
+    'semi': ['error', 'always'],
+    'no-multi-spaces': ['error', { exceptions: { 'ImportDeclaration': true } }],
     // allow paren-less arrow functions
     'arrow-parens': 0,
     // allow async-await

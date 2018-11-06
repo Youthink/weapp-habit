@@ -5,6 +5,7 @@
   "main": "dist/app.js",
   "scripts": {
     "dev": "wepy build --watch",
+    "lint": "eslint --ext .js,.wpy src --max-warnings 0",
     "build": "cross-env NODE_ENV=production wepy build --no-cache",
     "dev:web": "wepy build --output web",
     "clean": "find ./dist -maxdepth 1 -not -name 'project.config.json' -not -name 'dist' | xargs rm -rf",
