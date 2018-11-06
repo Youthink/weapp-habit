@@ -61,18 +61,17 @@
       </view>
     </panel>
 
-    <panel>
-      <view class="title" slot="title">测试组件Repeat</view>
-      <repeat for="{{habits}}" index="index" item="habit" key="{{habit.id}}">
-        <view class="title">{{habit.name}}</view>
-      </repeat>
-    </panel>
+    <view class="title">这里显示PK对比</view>
+    <view class="title">这里显示今天的分数对比</view>
+    <view class="title">这里显示本周期的分数对比</view>
+    <view class="title">这里显示习惯列表 </view>
+    <repeat for="{{habits}}" item="habit" key="{{habit.id}}">
+      <view class="title">{{habit.name}}</view>
+      <view class="title">{{habit.score}}</view>
+      <view class="title">按钮</view>
+    </repeat>
 
-    <panel>
-      <view class="title" slot="title">测试列表</view>
-      <list></list>
-    </panel>
-
+    <view class="title">添加导航 今天 所有 </view>
     <toast />
   </view>
 </template>
@@ -216,14 +215,15 @@
     }
 
     onLoadHabits() {
+      let self = this;
       wepy.request({
         url: 'http://localhost:4000/api/habit',
         data: {
           openId: 1,
           code: 1
         },
-        success: function (res) {
-          self.habits = res.data;
+        success: function ({ data }) {
+          self.habits = data.data;
           self.$apply();
         }
       });
