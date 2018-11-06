@@ -63,8 +63,8 @@
 
     <panel>
       <view class="title" slot="title">测试组件Repeat</view>
-      <repeat for="" index="index" item="item" key="key">
-        <group :grouplist="item" :indexa="index"></group>
+      <repeat for="{{habits}}" index="index" item="habit" key="{{habit.id}}">
+        <view class="title">{{habit.name}}</view>
       </repeat>
     </panel>
 
@@ -78,17 +78,13 @@
 </template>
 
 <script>
-  import wepy from 'wepy'
-  import Panel from '@/components/panel' // alias example
-  import Counter from 'counter' // alias example
-  import List from '../components/list' // aliasFields example
-  import moduleA from 'module-a' // aliasFields ignore module example
-  import Group from '../components/group'
-  import Toast from 'wepy-com-toast'
-  import testMixin from '../mixins/test'
-
-  console.log('moduleA ignored: ', moduleA) // => moduleA ignored: {}
-
+  import wepy      from 'wepy';
+  import Panel     from '@/components/panel'; // alias example
+  import Counter   from 'counter'; // alias example
+  import List      from '../components/list'; // aliasFields example
+  import Group     from '../components/group';
+  import Toast     from 'wepy-com-toast';
+  import testMixin from '../mixins/test';
 
   export default class Index extends wepy.page {
     config = {
@@ -106,6 +102,7 @@
     mixins = [testMixin]
 
     data = {
+      habits: [],
       mynum: 20,
       userInfo: {
         nickName: '加载中...'
@@ -162,78 +159,93 @@
 
     computed = {
       now () {
-        return +new Date()
+        return +new Date();
       }
     }
 
     methods = {
       plus () {
-        this.mynum++
+        this.mynum++;
       },
       toast () {
         let promise = this.$invoke('toast', 'show', {
           title: '自定义标题',
           img: 'https://raw.githubusercontent.com/kiinlam/wetoast/master/images/star.png'
-        })
+        });
 
         promise.then((d) => {
-          console.log('toast done')
-        })
+          console.log('toast done');
+        });
       },
       tap () {
-        console.log('do noting from ' + this.$name)
+        console.log('do noting from ' + this.$name);
       },
       communicate () {
-        console.log(this.$name + ' tap')
+        console.log(this.$name + ' tap');
 
-        this.$invoke('counter2', 'minus', 45, 6)
-        this.$invoke('counter1', 'plus', 45, 6)
+        this.$invoke('counter2', 'minus', 45, 6);
+        this.$invoke('counter1', 'plus', 45, 6);
 
-        this.$broadcast('index-broadcast', 1, 3, 4)
+        this.$broadcast('index-broadcast', 1, 3, 4);
       },
       request () {
-        let self = this
-        let i = 10
-        let map = ['MA==', 'MQo=', 'Mg==', 'Mw==', 'NA==', 'NQ==', 'Ng==', 'Nw==', 'OA==', 'OQ==']
+        let self = this;
+        let i = 10;
+        let map = ['MA==', 'MQo=', 'Mg==', 'Mw==', 'NA==', 'NQ==', 'Ng==', 'Nw==', 'OA==', 'OQ=='];
         while (i--) {
           wepy.request({
             url: 'https://www.madcoder.cn/tests/sleep.php?time=1&t=css&c=' + map[i] + '&i=' + i,
             success: function (d) {
-              self.netrst += d.data + '.'
-              self.$apply()
+              self.netrst += d.data + '.';
+              self.$apply();
             }
-          })
+          });
         }
       },
       counterEmit (...args) {
-        let $event = args[args.length - 1]
-        console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`)
+        let $event = args[args.length - 1];
+        console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`);
       }
     }
 
     events = {
       'index-emit': (...args) => {
-        let $event = args[args.length - 1]
-        console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`)
+        let $event = args[args.length - 1];
+        console.log(`${this.$name} receive ${$event.name} from ${$event.source.$name}`);
       }
     }
 
+    onLoadHabits() {
+      wepy.request({
+        url: 'http://localhost:4000/api/habit',
+        data: {
+          openId: 1,
+          code: 1
+        },
+        success: function (res) {
+          self.habits = res.data;
+          self.$apply();
+        }
+      });
+    }
+
     onLoad() {
-      let self = this
+      let self = this;
       this.$parent.getUserInfo(function (userInfo) {
         if (userInfo) {
-          self.userInfo = userInfo
+          self.userInfo = userInfo;
         }
-        self.normalTitle = '标题已被修改'
+        self.normalTitle = '标题已被修改';
 
-        self.setTimeoutTitle = '标题三秒后会被修改'
+        self.setTimeoutTitle = '标题三秒后会被修改';
         setTimeout(() => {
-          self.setTimeoutTitle = '到三秒了'
-          self.$apply()
-        }, 3000)
+          self.setTimeoutTitle = '到三秒了';
+          self.$apply();
+        }, 3000);
 
-        self.$apply()
-      })
+        self.$apply();
+      });
+      this.onLoadHabits();
     }
   }
 </script>

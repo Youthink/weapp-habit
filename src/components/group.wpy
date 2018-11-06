@@ -13,8 +13,8 @@
   </view>
 </template>
 <script>
-  import wepy from 'wepy'
-  import GroupItem from './groupitem'
+  import wepy from 'wepy';
+  import GroupItem from './groupitem';
 
   export default class Group extends wepy.component {
     props = {
@@ -27,8 +27,8 @@
     }
     methods = {
       tap () {
-        this.grouplist.name = `Parent Random(${Math.random()})`
-        console.log(`Clicked Group ${this.$index}, ID is ${this.grouplist.id}`)
+        this.grouplist.name = `Parent Random(${Math.random()})`;
+        console.log(`Clicked Group ${this.$index}, ID is ${this.grouplist.id}`);
       }
     }
   }

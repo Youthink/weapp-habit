@@ -9,7 +9,7 @@
   </view>
 </template>
 <script>
-  import wepy from 'wepy'
+  import wepy from 'wepy';
 
   export default class GroupItem extends wepy.component {
     props = {
@@ -19,8 +19,8 @@
     }
     methods = {
       tap () {
-        this.gitem.childname = `Child Random(${Math.random()})`
-        console.log(`Clicked Group ${this.$parent.$index}. Item ${this.$index}, ID is ${this.gitem.childid}`)
+        this.gitem.childname = `Child Random(${Math.random()})`;
+        console.log(`Clicked Group ${this.$parent.$index}. Item ${this.$index}, ID is ${this.gitem.childid}`);
       }
     }
   }
