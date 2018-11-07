@@ -1,27 +1,65 @@
 <style lang="less">
+  .total-score-section {
+    position: relative;
+    background: #FFFFFF;
+    border-radius: 5rpx;
+    margin: 7.5rpx 20rpx 20rpx;
+    padding: 20rpx 50rpx;
+
+    &:after {
+      clear: both;
+      content: '';
+      display: block;
+    }
+
+    .left-part {
+      float: left;
+    }
+
+    .right-part {
+      float: right;
+    }
+
+    .pk {
+      position: absolute;
+      top: 30rpx;
+      left: 45%;
+      font-size: 90rpx;
+    }
+    .today-score, .this-score {
+      font-size: 25rpx;
+      color: #333;
+    }
+
+    .this-score {
+
+    }
+
+  }
   .userinfo {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
 
-  .userinfo-avatar {
-    width: 60rpx;
-    height: 60rpx;
-    border-radius: 50%;
-  }
+    .userinfo-avatar {
+      width: 60rpx;
+      height: 60rpx;
+      border-radius: 50%;
+    }
 
-  .userinfo-nickname {
-    color: #aaa;
-    font-size: 25rpx;
+    .userinfo-nickname {
+      color: #aaa;
+      font-size: 25rpx;
+      margin-bottom: 15rpx;
+    }
   }
 
   .habits {
     &.list {
       .item {
         background: #FFFFFF;
-        margin: 7.5rpx 20rpx;
         border-radius: 5rpx;
+        margin: 7.5rpx 20rpx;
         padding: 20rpx 50rpx;
         .left-part {
           float: left;
@@ -57,14 +95,26 @@
 </style>
 <template>
   <view class="container">
-    <view class="userinfo" @tap="handleViewTap">
-      <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
-      <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
+    <view class="total-score-section">
+      <view class="left-part score-item">
+        <view class="userinfo">
+          <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
+          <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
+        </view>
+        <view class="today-score">今天 56分</view>
+        <view class="this-score">本周 123分</view>
+      </view>
+      <view class="pk">⚡</view>
+      <view class="right-part score-item">
+        <view class="userinfo">
+          <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
+          <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
+        </view>
+        <view class="today-score">今天 78分</view>
+        <view class="this-score">本周 142分</view>
+      </view>
     </view>
 
-    <view class="title">这里显示PK对比</view>
-    <view class="title">这里显示今天的分数对比</view>
-    <view class="title">这里显示本周期的分数对比</view>
     <view class="habits list">
       <repeat for="{{habits}}" item="habit" key="{{habit.id}}">
         <view class="item">
