@@ -1,56 +1,72 @@
 <style lang="less">
-.habits {
-  &.list {
-    .item {
-      background: #FFFFFF;
-      border-radius: 5rpx;
-      margin: 7.5rpx 20rpx;
-      padding: 20rpx 50rpx;
-      .left-part {
-        float: left;
-        .name {
-          color: #333;
-          font-size: 35rpx;
+.all-page {
+  .habits {
+    &.list {
+      .item {
+        background: #FFFFFF;
+        border-radius: 5rpx;
+        margin: 7.5rpx 20rpx;
+        padding: 20rpx 50rpx;
+        .left-part {
+          float: left;
+          .name {
+            color: #333;
+            font-size: 35rpx;
 
+          }
+          .score {
+            font-size: 25rpx;
+            margin-top: 10rpx;
+            color: #9398a7;
+          }
         }
-        .score {
-          font-size: 25rpx;
-          margin-top: 10rpx;
-          color: #9398a7;
+        .habit-btn {
+          padding: 10rpx;
+          font-size: 20rpx;
+          display: inline-block;
+          float: right;
+          border: 0;
+          background: unset;
+          margin-top: 15rpx;
+          overflow: unset;
         }
-      }
-      .habit-btn {
-        padding: 10rpx;
-        font-size: 20rpx;
-        display: inline-block;
-        float: right;
-        border: 0;
-        background: unset;
-        margin-top: 15rpx;
-        overflow: unset;
-      }
-      &:after {
-        clear: both;
-        content: '';
-        display: block;
+        &:after {
+          clear: both;
+          content: '';
+          display: block;
+        }
       }
     }
+  }
+  .add-habit {
+    position: absolute;
+    bottom: 40rpx;
+    right: 40rpx;
+    border-radius: 50%;
+    width: 120rpx;
+    height: 120rpx;
+    line-height: 120rpx;
+    background: #FFF;
+    border: 1px solid #FFF;
+    font-size: 60rpx;
+    text-align: center;
   }
 }
 </style>
 <template>
-  <view class="container">
+  <view class="all-page container">
     <view class="habits list">
-        <repeat for="{{habits}}" item="habit" key="{{habit.id}}">
-          <view class="item">
-            <view class="left-part">
-              <view class="name">{{habit.name}}</view>
-              <view class="score">💯 {{habit.score}}分</view>
-            </view>
-            <button class="habit-btn">⚡ 完成⚡</button>
+      <repeat for="{{habits}}" item="habit" key="{{habit.id}}">
+        <view class="item">
+          <view class="left-part">
+            <view class="name">{{habit.name}}</view>
+            <view class="score">💯 {{habit.score}}分</view>
           </view>
-        </repeat>
-      </view>
+          <button class="habit-btn">⚡ 完成⚡</button>
+        </view>
+      </repeat>
+    </view>
+    <view class="add-habit">🌵</view>
   </view>
 </template>
 
