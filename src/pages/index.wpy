@@ -30,11 +30,6 @@
       font-size: 25rpx;
       color: #333;
     }
-
-    .this-score {
-
-    }
-
   }
   .userinfo {
     display: flex;
@@ -81,7 +76,7 @@
           float: right;
           border: 0;
           background: unset;
-          margin-top:15rpx;
+          margin-top: 15rpx;
           overflow: unset;
         }
         &:after {
@@ -136,7 +131,7 @@
 
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: 'test'
+      navigationBarTitleText: '亲密习惯'
     }
     components = {
       toast: Toast
