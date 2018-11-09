@@ -7,62 +7,81 @@
       border-radius: unset;
     }
   }
+  .wetoast_show {
+    .wetoast__bd__title {
+      font-size: 12px;
+    }
+  }
 </style>
 <template>
   <view class="add-habit-page">
-    <view class="weui-cells weui-cells_after-title">
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">名称</view>
+    <form @submit="submitHabit" class="form-id-component" >
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">名称</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="name" placeholder="请输入习惯名称" maxlength=20 type="text" />
+          </view>
         </view>
-        <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入习惯名称"/>
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">分数</view>
+          </view>
+          <view class="weui-cell__bd">
+            <input class="weui-input" name="score" placeholder="请输入习惯分数" type="number" />
+          </view>
         </view>
       </view>
-      <view class="weui-cell weui-cell_input">
-        <view class="weui-cell__hd">
-          <view class="weui-label">分数</view>
-        </view>
-        <view class="weui-cell__bd">
-          <input class="weui-input" placeholder="请输入习惯分数"/>
-        </view>
-      </view>
-    </view>
-    <button class="weui-btn add-habit-btn" type="primary" @tap="s">添加</button>
+      <button class="weui-btn add-habit-btn" formType="submit" type="primary">添加</button>
+    </form>
+    <toast />
   </view>
 </template>
 
 <script>
-  import wepy from 'wepy';
+  import wepy  from 'wepy';
+  import _get  from 'lodash.get';
+  import Toast from 'wepy-com-toast';
 
   export default class AddHabit extends wepy.page {
     config = {
       navigationBarTitleText: '添加习惯'
     }
     components = {
+      toast: Toast
     }
 
     data = {
     }
 
     methods = {
-      s() {
-        this.$switch('/pages/all');
+      submitHabit(e) {
+        const name = _get(e, 'detail.value.name');
+        const score = _get(e, 'detail.value.score') || 3;
+        if (!name) {
+          this.$invoke('toast', 'show', { title: '习惯名称不能为空哦~~'});
+          return;
+        }
+        this.addHabit({name, score});
       }
     }
 
-    addHabit() {
+    addHabit(opts) {
       let self = this;
       wepy.request({
         url: 'http://localhost:4000/api/habit',
         method: 'POST',
         data: {
-          openId: 1,
-          code: 1
+          openId: '88888888',
+          code: '88888888',
+          ...opts
         },
         success: function ({ data }) {
-          self.habits = data.data;
-          self.$apply();
+          if (data.success) {
+            self.$switch('/pages/all');
+          }
         }
       });
     }

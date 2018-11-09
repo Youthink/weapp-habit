@@ -1601,6 +1601,11 @@ levn@^0.3.0, levn@~0.3.0:
     prelude-ls "~1.1.2"
     type-check "~0.3.2"
 
+lodash.get@^4.4.2:
+  version "4.4.2"
+  resolved "http://r.cnpmjs.org/lodash.get/download/lodash.get-4.4.2.tgz#2d177f652fa31e939b4438d5341499dfa3825e99"
+  integrity sha1-LRd/ZS+jHpObRDjVNBSZ36OCXpk=
+
 lodash@^4.0.0, lodash@^4.17.4, lodash@^4.3.0:
   version "4.17.11"
   resolved "http://r.cnpmjs.org/lodash/download/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
@@ -2219,7 +2224,7 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-wepy-async-function@^1.4.4:
+wepy-async-function@^1.4.6:
   version "1.4.6"
   resolved "http://r.cnpmjs.org/wepy-async-function/download/wepy-async-function-1.4.6.tgz#b650c3d46ddea54404ba1e005e0b949897c69804"
   integrity sha1-tlDD1G3epUQEuh4AXguUmJfGmAQ=
@@ -2251,7 +2256,7 @@ wepy-eslint@^1.5.3:
   resolved "http://r.cnpmjs.org/wepy-eslint/download/wepy-eslint-1.5.4.tgz#56a1315daf1f09334ad6a1e8237eb823b50f82b3"
   integrity sha1-VqExXa8fCTNK1qHoI364I7UPgrM=
 
-wepy@^1.6.0:
+wepy@^1.7.2:
   version "1.7.2"
   resolved "http://r.cnpmjs.org/wepy/download/wepy-1.7.2.tgz#679052401f2b1f4818644bc44f88b72975491a64"
   integrity sha1-Z5BSQB8rH0gYZEvET4i3KXVJGmQ=
