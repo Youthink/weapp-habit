@@ -117,7 +117,7 @@
             <view class="name">{{habit.name}}</view>
             <view class="score">💯 {{habit.score}}分</view>
           </view>
-          <button class="habit-btn">⚡ 完成⚡</button>
+          <button class="habit-btn" @tap="finishHabit({{habit.id}})">⚡ 完成⚡</button>
         </view>
       </repeat>
     </view>
@@ -145,14 +145,21 @@
     }
 
     methods = {
-      toast () {
-        let promise = this.$invoke('toast', 'show', {
-          title: '自定义标题',
-          img: 'https://raw.githubusercontent.com/kiinlam/wetoast/master/images/star.png'
-        });
-
-        promise.then((d) => {
-          console.log('toast done');
+      finishHabit(habitId) {
+        let self = this;
+        wepy.request({
+          url: 'http://localhost:4000/api/checkIn',
+          method: 'POST',
+          data: {
+            openId: '88888888',
+            code: '88888888',
+            habitId: habitId
+          },
+          success: function ({ data }) {
+            if (data.success) {
+              self.onLoadHabits();
+            }
+          }
         });
       }
     }
@@ -162,8 +169,8 @@
       wepy.request({
         url: 'http://localhost:4000/api/habit',
         data: {
-          openId: 1,
-          code: 1
+          openId: '88888888',
+          code: '88888888'
         },
         success: function ({ data }) {
           self.habits = data.data;
