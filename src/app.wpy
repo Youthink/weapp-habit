@@ -1,10 +1,10 @@
 <style lang="less">
+@import "style/weui.wxss";
+
 page {
-  height: 100%;
-}
-.container {
-  height: 100%;
-  background: #f8f9fb;
+  background-color: #F8F8F8;
+  font-size: 16px;
+  font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
 }
 </style>
 
