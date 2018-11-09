@@ -1,0 +1,47 @@
+<style lang="less">
+</style>
+<template>
+  <view class="add-habit-page container">
+    <button class="submit" @tap="s">添加</button>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy';
+
+  export default class AddHabit extends wepy.page {
+    config = {
+      navigationBarTitleText: '添加习惯'
+    }
+    components = {
+    }
+
+    data = {
+    }
+
+    methods = {
+      s() {
+        this.$switch('/pages/all');
+      }
+    }
+
+    addHabit() {
+      let self = this;
+      wepy.request({
+        url: 'http://localhost:4000/api/habit',
+        method: 'POST',
+        data: {
+          openId: 1,
+          code: 1
+        },
+        success: function ({ data }) {
+          self.habits = data.data;
+          self.$apply();
+        }
+      });
+    }
+
+    onLoad() {
+    }
+  }
+</script>

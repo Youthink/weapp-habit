@@ -40,6 +40,7 @@
   }
   .add-habit {
     position: absolute;
+    padding: 0;
     bottom: 40rpx;
     right: 40rpx;
     border-radius: 50%;
@@ -50,6 +51,9 @@
     border: 1px solid #FFF;
     font-size: 60rpx;
     text-align: center;
+    &:after {
+      border: none;
+    }
   }
 }
 </style>
@@ -66,7 +70,7 @@
         </view>
       </repeat>
     </view>
-    <view class="add-habit">🌵</view>
+    <button class="add-habit" @tap="goAddHabit">🌵</button>
   </view>
 </template>
 
@@ -75,13 +79,19 @@
 
   export default class All extends wepy.page {
     config = {
-      navigationBarTitleText: 'test'
+      navigationBarTitleText: '亲密习惯'
     }
     components = {
     }
 
     data = {
       habits: []
+    }
+
+    methods = {
+      goAddHabit() {
+        this.$redirect('/pages/addHabit');
+      }
     }
 
     onLoadHabits() {

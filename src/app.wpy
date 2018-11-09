@@ -17,7 +17,8 @@ export default class extends wepy.app {
     pages: [
       'pages/index',
       'pages/all',
-      'pages/settings'
+      'pages/settings',
+      'pages/addHabit'
     ],
     window: {
       backgroundTextStyle: 'light',
