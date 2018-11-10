@@ -61,7 +61,7 @@
         const name = _get(e, 'detail.value.name');
         const score = _get(e, 'detail.value.score') || 3;
         if (!name) {
-          this.$invoke('toast', 'show', { title: '习惯名称不能为空哦~~'});
+          this.$invoke('toast', 'show', {title: '习惯名称不能为空哦~~'});
           return;
         }
         this.addHabit({name, score});

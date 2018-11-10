@@ -177,7 +177,7 @@
           },
           success: function ({ data }) {
             if (data.success) {
-              this.onLoadHabits();
+              self.onLoadHabits();
             }
           }
         });
