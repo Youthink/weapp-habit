@@ -69,11 +69,27 @@
             color: #9398a7;
           }
         }
+
+        .left {
+          float: right;
+        }
+
+        .center {
+          text-align: center;
+        }
+
+        .finish {
+          font-size: 30rpx;
+          color: #9398a7;
+        }
+
+        .ok {
+          margin-top: 10rpx;
+        }
         .habit-btn {
           padding: 10rpx;
           font-size: 20rpx;
           display: inline-block;
-          float: right;
           border: 0;
           background: unset;
           margin-top: 15rpx;
@@ -117,7 +133,11 @@
             <view class="name">{{habit.name}}</view>
             <view class="score">💯 {{habit.score}}分</view>
           </view>
-          <button class="habit-btn" @tap="finishHabit({{habit.id}})">⚡ 完成⚡</button>
+          <button wx:if="{{habit.status !== 'finish'}}" class="habit-btn left" @tap="finishHabit({{habit.id}})">⚡ 完成⚡</button>
+          <view wx:if="{{habit.status === 'finish'}}" class="finish left">
+            <view>已完成</view>
+            <view class="center ok">👍</view>
+          </view>
         </view>
       </repeat>
     </view>
@@ -157,7 +177,7 @@
           },
           success: function ({ data }) {
             if (data.success) {
-              self.onLoadHabits();
+              this.onLoadHabits();
             }
           }
         });
@@ -167,10 +187,11 @@
     onLoadHabits() {
       let self = this;
       wepy.request({
-        url: 'http://localhost:4000/api/habit',
+        url: 'http://localhost:4000/api/day',
         data: {
           openId: '88888888',
-          code: '88888888'
+          code: '88888888',
+          date: '2018-11-10'
         },
         success: function ({ data }) {
           self.habits = data.data;
