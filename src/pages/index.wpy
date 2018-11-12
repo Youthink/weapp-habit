@@ -112,7 +112,7 @@
           <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
           <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
         </view>
-        <view class="today-score">今天 56分</view>
+        <view class="today-score">今天 {{myTodayTotalScore}}分</view>
         <view class="this-score">本周 123分</view>
       </view>
       <view class="pk">⚡</view>
@@ -148,6 +148,7 @@
 <script>
   import wepy      from 'wepy';
   import Toast     from 'wepy-com-toast';
+  import _get      from 'lodash.get';
 
   export default class Index extends wepy.page {
     config = {
@@ -159,6 +160,7 @@
 
     data = {
       habits: [],
+      myTodayTotalScore: 0,
       userInfo: {
         nickName: '加载中...'
       }
@@ -194,7 +196,8 @@
           date: '2018-11-10'
         },
         success: function ({ data }) {
-          self.habits = data.data;
+          self.habits = _get(data, 'data.habitsList') || [];
+          self.myTodayTotalScore = _get(data, 'data.todayTotalScore') || 0;
           self.$apply();
         }
       });
