@@ -109,8 +109,12 @@
     <view class="total-score-section">
       <view class="left-part score-item">
         <view class="userinfo">
-          <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
-          <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
+          <view class="userinfo-avatar">
+            <open-data type="userAvatarUrl"></open-data>
+          </view>
+          <view class="userinfo-nickname">
+            <open-data type="userNickName" lang="zh_CN"></open-data>
+          </view>
         </view>
         <view class="today-score">今天 {{myTodayTotalScore}}分</view>
         <view class="this-score">本周 123分</view>
@@ -118,8 +122,12 @@
       <view class="pk">⚡</view>
       <view class="right-part score-item">
         <view class="userinfo">
-          <image class="userinfo-avatar" src="{{ userInfo.avatarUrl }}" background-size="cover"/>
-          <view class="userinfo-nickname">{{ userInfo.nickName }}</view>
+          <view class="userinfo-avatar">
+            <open-data type="userAvatarUrl"></open-data>
+          </view>
+          <view class="userinfo-nickname">
+            <open-data type="userNickName" lang="zh_CN"></open-data>
+          </view>
         </view>
         <view class="today-score">今天 78分</view>
         <view class="this-score">本周 142分</view>
@@ -160,10 +168,7 @@
 
     data = {
       habits: [],
-      myTodayTotalScore: 0,
-      userInfo: {
-        nickName: '加载中...'
-      }
+      myTodayTotalScore: 0
     }
 
     methods = {
