@@ -157,6 +157,7 @@
   import wepy      from 'wepy';
   import Toast     from 'wepy-com-toast';
   import _get      from 'lodash.get';
+  import moment    from 'moment';
 
   export default class Index extends wepy.page {
     config = {
@@ -193,12 +194,13 @@
 
     onLoadHabits() {
       let self = this;
+      const date = moment().format('YYYY-MM-DD');
       wepy.request({
         url: 'http://localhost:4000/api/day',
         data: {
           openId: '88888888',
           code: '88888888',
-          date: '2018-11-10'
+          date
         },
         success: function ({ data }) {
           self.habits = _get(data, 'data.habitsList') || [];
