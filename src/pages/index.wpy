@@ -117,7 +117,7 @@
           </view>
         </view>
         <view class="today-score">今天 {{myTodayTotalScore}}分</view>
-        <view class="this-score">本周 123分</view>
+        <view class="this-score">本周 {{weekTotalScore}}分</view>
       </view>
       <view class="pk">⚡</view>
       <view class="right-part score-item">
@@ -169,7 +169,8 @@
 
     data = {
       habits: [],
-      myTodayTotalScore: 0
+      myTodayTotalScore: 0,
+      weekTotalScore: 0
     }
 
     methods = {
@@ -205,6 +206,7 @@
         success: function ({ data }) {
           self.habits = _get(data, 'data.habitsList') || [];
           self.myTodayTotalScore = _get(data, 'data.todayTotalScore') || 0;
+          self.weekTotalScore = _get(data, 'data.weekTotalScore') || 0;
           self.$apply();
         }
       });
