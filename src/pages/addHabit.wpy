@@ -41,9 +41,10 @@
 </template>
 
 <script>
-  import wepy  from 'wepy';
-  import _get  from 'lodash.get';
-  import Toast from 'wepy-com-toast';
+  import wepy   from 'wepy';
+  import _get   from 'lodash.get';
+  import apiUrl from '../config/apiUrl';
+  import Toast  from 'wepy-com-toast';
 
   export default class AddHabit extends wepy.page {
     config = {
@@ -71,7 +72,7 @@
     addHabit(opts) {
       let self = this;
       wepy.request({
-        url: 'http://localhost:4000/api/habit',
+        url: apiUrl.addHabit,
         method: 'POST',
         data: {
           openId: '88888888',

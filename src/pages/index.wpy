@@ -49,6 +49,20 @@
     }
   }
 
+  .go-award {
+    background: #FFFFFF;
+    border-radius: 5rpx;
+    margin: 7.5rpx 20rpx 15rpx;
+    padding: 20rpx 50rpx;
+    font-size: 35rpx;
+    view {
+      display: inline-block;
+    }
+    .goto {
+      float: right;
+    }
+  }
+
   .habits {
     &.list {
       .item {
@@ -134,6 +148,11 @@
       </view>
     </view>
 
+    <view class="go-award">
+      <view class="text">本周奖励</view>
+      <view class="goto">🚀</view>
+    </view>
+
     <view class="habits list">
       <repeat for="{{habits}}" item="habit" key="{{habit.id}}">
         <view class="item">
@@ -154,10 +173,11 @@
 </template>
 
 <script>
-  import wepy      from 'wepy';
-  import Toast     from 'wepy-com-toast';
-  import _get      from 'lodash.get';
-  import moment    from 'moment';
+  import wepy   from 'wepy';
+  import Toast  from 'wepy-com-toast';
+  import _get   from 'lodash.get';
+  import moment from 'moment';
+  import apiUrl from '../config/apiUrl';
 
   export default class Index extends wepy.page {
     config = {
@@ -177,7 +197,7 @@
       finishHabit(habitId) {
         let self = this;
         wepy.request({
-          url: 'http://localhost:4000/api/checkIn',
+          url: apiUrl.checkIn,
           method: 'POST',
           data: {
             openId: '88888888',
@@ -197,7 +217,7 @@
       let self = this;
       const date = moment().format('YYYY-MM-DD');
       wepy.request({
-        url: 'http://localhost:4000/api/day',
+        url: apiUrl.day,
         data: {
           openId: '88888888',
           code: '88888888',

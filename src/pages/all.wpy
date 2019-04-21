@@ -82,7 +82,8 @@
 </template>
 
 <script>
-  import wepy      from 'wepy';
+  import wepy   from 'wepy';
+  import apiUrl from '../config/apiUrl';
 
   export default class All extends wepy.page {
     config = {
@@ -104,7 +105,7 @@
     onLoadHabits() {
       let self = this;
       wepy.request({
-        url: 'http://localhost:4000/api/habit',
+        url: apiUrl.getHabitList,
         data: {
           openId: '88888888',
           code: '88888888'
