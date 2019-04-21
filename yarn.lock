@@ -2229,10 +2229,10 @@ verror@1.10.0:
     core-util-is "1.0.2"
     extsprintf "^1.2.0"
 
-wepy-async-function@^1.4.6:
-  version "1.4.6"
-  resolved "http://r.cnpmjs.org/wepy-async-function/download/wepy-async-function-1.4.6.tgz#b650c3d46ddea54404ba1e005e0b949897c69804"
-  integrity sha1-tlDD1G3epUQEuh4AXguUmJfGmAQ=
+wepy-async-function@^1.4.7:
+  version "1.4.7"
+  resolved "http://r.cnpmjs.org/wepy-async-function/download/wepy-async-function-1.4.7.tgz#f783164306e175d9a7c2656a33532e619c8eae16"
+  integrity sha1-94MWQwbhddmnwmVqM1MuYZyOrhY=
   dependencies:
     promise-polyfill "^6.0.2"
     regenerator-runtime "^0.10.3"

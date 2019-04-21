@@ -21,7 +21,7 @@
     "lodash.get": "^4.4.2",
     "moment": "^2.22.2",
     "wepy": "^1.7.2",
-    "wepy-async-function": "^1.4.6",
+    "wepy-async-function": "^1.4.7",
     "wepy-com-toast": "^1.0.2"
   },
   "devDependencies": {
